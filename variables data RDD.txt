@@ -1,0 +1,194 @@
+Descripción de variables
+fabregas_data.dta
+Basado en Fabregas (2023), The Economic Journal
+
+La base fabregas_data.dta contiene 40,000 observaciones a nivel estudiante correspondientes a las cohortes de solicitud de ingreso a secundaria de 2011 y 2012 en la Ciudad de México. Los datos buscan replicar los resultados principales de Fabregas (2023) y no corresponden a los datos administrativos oficiales utilizados por la autora. La base ya incluye el merge con los cortes de admisión por plantel; los estudiantes deben construir la running variable (rv) y el indicador de tratamiento (above).
+
+IDENTIFICADORES
+
+student_id
+Tipo: String
+Identificador único del estudiante (formato S000001).
+
+facility_id
+Tipo: String
+Identificador del plantel de primera opción del estudiante (formato F001–F308). Cada plantel opera con turno matutino y vespertino.
+
+cohort
+Tipo: Numérica
+Cohorte de solicitud de ingreso a secundaria. Toma valores 2011 o 2012.
+
+fc_id
+Tipo: String
+Identificador de celda plantel-cohorte (facility_id_cohort). Se utiliza para construir los efectos fijos theta_fc de la especificación principal.
+
+VARIABLE DE ASIGNACIÓN
+
+placement
+Tipo: Numérica
+Puntaje bruto del estudiante en el examen de diagnóstico de admisión a secundaria (IDANIS). Escala de 0 a 60 puntos. El algoritmo de asignación ordena a los estudiantes por este puntaje dentro de cada plantel.
+
+cutoff
+Tipo: Numérica
+Puntaje de corte de admisión al turno matutino del plantel de primera opción del estudiante. Varía entre planteles (rango aproximado: 25–55 puntos). Los estudiantes deben construir rv = placement - cutoff y above = 1(rv > 0).
+
+COVARIABLES PRE-ASIGNACIÓN (APÉNDICE B.1)
+
+Todas las covariables de esta sección son predeterminadas: se recopilan antes de que los estudiantes presenten el examen de diagnóstico o son características observadas al momento de la solicitud. La especificación principal incluye todas estas variables como controles para mejorar la precisión de las estimaciones; su inclusión no es necesaria para la identificación.
+
+female
+Tipo: Binaria
+Igual a 1 si el estudiante es mujer.
+
+age
+Tipo: Numérica
+Edad en años del estudiante al momento de solicitar ingreso a secundaria. Media aproximada: 12.2 años.
+
+mom_ms
+Tipo: Binaria
+Igual a 1 si la madre del estudiante reportó haber completado la secundaria o algún nivel educativo adicional.
+
+dad_ms
+Tipo: Binaria
+Igual a 1 si el padre del estudiante reportó haber completado la secundaria o algún nivel educativo adicional.
+
+lives_near
+Tipo: Binaria
+Igual a 1 si el estudiante vive en la misma colonia donde se ubica el plantel de primera opción.
+
+sibling
+Tipo: Binaria
+Igual a 1 si el estudiante tenía al menos un hermano inscrito en el plantel de primera opción al momento de la solicitud.
+
+single_mom
+Tipo: Binaria
+Igual a 1 si el estudiante vive en un hogar encabezado únicamente por la madre (madre jefa de hogar).
+
+mom_works
+Tipo: Binaria
+Igual a 1 si la madre trabaja fuera del hogar.
+
+family_size
+Tipo: Numérica
+Número de personas que residen en el mismo hogar que el estudiante al momento de la solicitud.
+
+disability
+Tipo: Binaria
+Igual a 1 si el estudiante reportó alguna discapacidad física o de aprendizaje en el formulario de solicitud.
+
+bmi
+Tipo: Numérica
+Índice de masa corporal del estudiante, construido a partir del peso reportado (kg) dividido entre la estatura al cuadrado (m^2).
+
+score_6th_math
+Tipo: Numérica
+Puntaje estandarizado del examen de matemáticas de 6° grado (ENLACE), con media 0 y desviación estándar 1 por cohorte. Calificación ex ante; no refleja el efecto del tratamiento.
+
+score_6th_lang
+Tipo: Numérica
+Puntaje estandarizado del examen de lenguaje y comunicación de 6° grado (ENLACE), con media 0 y desviación estándar 1 por cohorte.
+
+VARIABLES DE PRIMERA ETAPA
+
+Estas variables documentan el cumplimiento efectivo con la oferta de asignación. Dado que no todos los estudiantes asignados al turno matutino se inscriben en él ni todos los asignados al vespertino permanecen ahí, el diseño es fuzzy. El paper reporta ITT usando above como variable de tratamiento y no instrumenta directamente sobre estas variables.
+
+enrolled_first
+Tipo: Binaria
+Igual a 1 si el estudiante efectivamente se inscribió en el plantel de primera opción en el turno matutino en 7° grado. Tasa de cumplimiento en el lado derecho del corte: aproximadamente 86%.
+
+any_morning
+Tipo: Binaria
+Igual a 1 si el estudiante se inscribió en cualquier turno matutino en la ciudad en 7° grado, independientemente del plantel. Captura el hecho de que algunos estudiantes sin oferta matutina en su plantel de primera opción consiguen un cupo matutino en otro plantel.
+
+peer_score
+Tipo: Numérica
+Puntaje promedio de los compañeros de escuela en 7° grado, calculado con los resultados estandarizados del examen de 6° grado (ENLACE). Discontinuidad en el corte: +0.445 DE.
+
+pct_rank
+Tipo: Numérica
+Rango percentil del estudiante dentro de la distribución de habilidad de su escuela en 7° grado, calculado con los puntajes de 6° grado. Discontinuidad en el corte: -0.137.
+
+OUTCOMES
+
+Exámenes estandarizados externos
+
+lang_7th
+Tipo: Numérica
+Resultado estandarizado del examen de lenguaje de 7° grado (ENLACE). Media 0, DE 1 por cohorte. Examen de bajo impacto (low-stakes): no afecta la calificación oficial del estudiante.
+
+math_7th
+Tipo: Numérica
+Resultado estandarizado del examen de matemáticas de 7° grado (ENLACE). Media 0, DE 1 por cohorte.
+
+lang_hs
+Tipo: Numérica
+Resultado estandarizado en la sección de lenguaje del examen de ingreso a bachillerato (COMIPEMS), presentado al final de 9° grado. Media 0, DE 1 sobre el universo de aplicantes a bachillerato público.
+
+math_hs
+Tipo: Numérica
+Resultado estandarizado en la sección de matemáticas del examen de ingreso a bachillerato (COMIPEMS).
+
+achievement_index
+Tipo: Numérica
+Índice compuesto que promedia los resultados estandarizados de lang_7th, math_7th, lang_hs y math_hs, ponderados por la inversa de la matriz de covarianzas (Anderson, 2008).
+
+Calificaciones internas y progresión
+
+gpa_8th
+Tipo: Numérica
+Promedio de calificaciones del estudiante en 8° grado, reportado en el cuestionario de contexto del examen de bachillerato. Escala de 0 a 10. A diferencia de los exámenes externos, refleja la evaluación subjetiva del docente.
+
+failed_course
+Tipo: Binaria
+Igual a 1 si el estudiante reportó haber reprobado al menos una materia en 9° grado.
+
+no_certificate
+Tipo: Binaria
+Igual a 1 si el estudiante no había obtenido su certificado de secundaria en la base administrativa de ingreso a bachillerato, medido al menos cuatro años después de haber iniciado la secundaria.
+
+school_perf_index
+Tipo: Numérica
+Índice de desempeño escolar construido a partir de gpa_8th (invertido), failed_course y no_certificate. Un valor mayor indica mejor desempeño.
+
+Habilidades socioemocionales y autopercepción
+
+Nota: relative_idx y perseverance_idx están disponibles únicamente para la cohorte 2011; time_mgmt_idx y teamwork_idx únicamente para la cohorte 2012. Las observaciones de la cohorte complementaria aparecen como valores perdidos (. en Stata).
+
+relative_idx
+Tipo: Numérica
+Índice de autopercepción académica relativa. Construido a partir de una pregunta que pide al estudiante calificar su desempeño frente al de sus compañeros en matemáticas, español, biología e historia (escala: mejor, igual, peor). Solo cohorte 2011.
+
+perseverance_idx
+Tipo: Numérica
+Índice de perseverancia (versión abreviada de la escala grit). Construido a partir de afirmaciones como “Los contratiempos me desaniman”, “Soy una persona diligente”, “Termino todo lo que empiezo” y “Soy trabajador/a”. Solo cohorte 2011.
+
+time_mgmt_idx
+Tipo: Numérica
+Índice de gestión del tiempo. Construido a partir de la frecuencia con que el estudiante: establece prioridades, establece plazos, termina lo que comienza y planea sus tareas. Solo cohorte 2012.
+
+teamwork_idx
+Tipo: Numérica
+Índice de habilidades de trabajo en equipo. Construido a partir de la frecuencia con que el estudiante: participa en la planificación de actividades, colabora en el desarrollo de estrategias, resuelve conflictos y hace sugerencias para mejorar el desempeño del equipo. Solo cohorte 2012.
+
+Aspiraciones y elección de bachillerato
+
+aspires_college
+Tipo: Binaria
+Igual a 1 si el estudiante indicó en el cuestionario de contexto que aspira a cursar una licenciatura o posgrado.
+
+frac_voc_hs
+Tipo: Numérica
+Fracción de bachilleratos vocacionales o técnicos sobre el total de opciones listadas por el estudiante en su solicitud de ingreso a bachillerato. Las escuelas IPN de élite se codifican como académicas. Rango: 0 a 1.
+
+academic_asp_index
+Tipo: Numérica
+Índice de aspiraciones académicas construido a partir de aspires_college y frac_voc_hs (invertido). Un valor mayor indica aspiraciones más académicas.
+
+VARIABLES AUXILIARES
+
+matched_hs
+Tipo: Binaria
+Igual a 1 si el estudiante pudo ser vinculado a la base de datos de solicitud de ingreso a bachillerato. Se utiliza para verificar atrición diferencial alrededor del corte (Tabla A2 del paper).
+
+Referencia:
+Fabregas, R. (2023). Trade-offs of attending better schools: Achievement, self-perceptions and educational trajectories. The Economic Journal, 133(655), 2709-2737. https://doi.org/10.1093/ej/uead042
