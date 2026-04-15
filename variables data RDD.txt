@@ -30,7 +30,7 @@ Puntaje bruto del estudiante en el examen de diagnóstico de admisión a secunda
 
 cutoff
 Tipo: Numérica
-Puntaje de corte de admisión al turno matutino del plantel de primera opción del estudiante. Varía entre planteles (rango aproximado: 25–55 puntos). Los estudiantes deben construir rv = placement - cutoff y above = 1(rv > 0).
+Puntaje de corte de admisión al turno matutino del plantel de primera opción del estudiante. Varía entre planteles (rango aproximado: 25–55 puntos).
 
 COVARIABLES PRE-ASIGNACIÓN (APÉNDICE B.1)
 
