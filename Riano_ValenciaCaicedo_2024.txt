@@ -1,20 +1,46 @@
-# Taller-3-Causal-Inference-
+Variables de la base Riano_ValenciaCaicedo_2024.csv
+Fuente: Riaño y Valencia Caicedo (2024), "Collateral Damage: The Legacy of the Secret War in Laos", The Economic Journal.
 
-Bases de datos para el taller 3.
+Unidad de observación: celda geográfica de Laos (id_r), observada en 1993, 2003 y 2013.
+2,216 celdas x 3 años = 6,648 observaciones.
 
-## Problema 1 - Error de medición
+Las variables marcadas con (estandarizada) tienen media 0 y desviación estándar 1.
+Las variables de bombardeos, distancias a los instrumentos y controles no cambian en el tiempo; solo varían Lights y year.
 
-Utilicen la base `sleep_score.dta`. Las variables son las siguientes:
+IDENTIFICADORES
+-id_r: identificador de la celda.
+-year: año de la observación (1993, 2003, 2013).
+-id_1: identificador de la provincia.
+-name_1: nombre de la provincia.
+-id_2: identificador del distrito.
+-name_2: nombre del distrito.
 
-- **Atardecer:** hora promedio del atardecer durante la semana del experimento.
-- **Sueño:** horas de sueño promedio durante la semana del experimento.
-- **Puntaje:** puntaje expresado en desviaciones estándar.
-- **Error:** error promedio en la cantidad de sueño.
+VARIABLE DEPENDIENTE
+-Lights: intensidad de luces nocturnas en la celda.
 
-## Problema 2 - Instrumentos no binarios e instrumentos débiles
+VARIABLE ENDÓGENA (TRATAMIENTO)
+-log_bombs: logaritmo de la intensidad de los bombardeos en la celda (estandarizada).
+-bombs: intensidad de los bombardeos en la celda, sin transformar.
 
-Utilicen la base `Riano_ValenciaCaicedo_2024.csv` y consulten `variables data IV.txt` para revisar las variables.
+INSTRUMENTOS
+-dist_nearest_hochi: distancia a la Ruta Ho Chi Minh (km).
+-dist_nearest_base: distancia a la base aérea histórica más cercana (km).
 
-## Problema 3
+CONTROLES DE UBICACIÓN
+-inside_x: coordenada x (longitud) de la celda (estandarizada).
+-inside_y: coordenada y (latitud) de la celda (estandarizada).
+-dist_dmz: distancia a la zona desmilitarizada entre Vietnam del Norte y del Sur (estandarizada).
+-dist_vnm_border: distancia a la frontera con Vietnam (estandarizada).
+-dist_popcenter: distancia al centro de población más cercano (estandarizada).
 
-Utilicen la base `fabregas_data.dta` y consulten `variables data RDD.txt` para revisar las variables.
+CONTROLES GEOGRÁFICOS
+-avgalt: altitud promedio (estandarizada).
+-avgtemp: temperatura promedio (estandarizada).
+-avgprec: precipitación promedio (estandarizada).
+
+OTRAS VARIABLES
+-area: área de la celda.
+-uxo: artefactos explosivos sin detonar (UXO) en la celda.
+-uxo1993: artefactos explosivos sin detonar (UXO) en la celda, medición de 1993.
+-roads1970: caminos en la celda en 1970.
+-ruggnunnpuga: índice de rugosidad del terreno (Nunn y Puga). Esta variable no contiene datos en la base y no debe utilizarse.
