@@ -1,0 +1,57 @@
+Variables de la base Ozier_2018.csv
+Fuente: Ozier (2018), "The Impact of Secondary Schooling in Kenya: A Regression Discontinuity Analysis", Journal of Human Resources 53(1): 157-188.
+
+Unidad de observación: individuo (5,084 observaciones).
+Algunas variables solo están disponibles para una submuestra (por ejemplo, el puntaje administrativo existe para 2,169 individuos y pregnant_by_18 solo para mujeres).
+
+IDENTIFICADOR Y CARACTERÍSTICAS PREDETERMINADAS
+-rowid: identificador del individuo.
+-psdp_std98: grado escolar (standard) del individuo en 1998.
+-female: igual a 1 si es mujer.
+-age_at_klps2_approximate: edad aproximada al momento de la encuesta de seguimiento (KLPS ronda 2).
+-fathers_education: años de educación del padre.
+-fathers_education_0_if_missing: años de educación del padre, igual a 0 si falta el dato.
+-missing_fathers_education: igual a 1 si falta la educación del padre.
+-mothers_education: años de educación de la madre.
+-mothers_education_0_if_missing: años de educación de la madre, igual a 0 si falta el dato.
+-missing_mothers_education: igual a 1 si falta la educación de la madre.
+
+PUNTAJES DEL EXAMEN (KCPE)
+-kcpe_self_recent: puntaje KCPE autorreportado del examen más reciente.
+-kcpe_self_or_matched_recent: puntaje KCPE más reciente, autorreportado o emparejado con registros administrativos.
+-kcpe_confirmed_first: puntaje KCPE del primer examen, confirmado con registros administrativos.
+-kcpe_confirmed_first_scaled: (kcpe_confirmed_first - 250) / 100.
+-has_score: igual a 1 si el individuo tiene puntaje KCPE.
+-has_score_2016: igual a 1 si el individuo tiene puntaje KCPE (versión 2016).
+
+RUNNING VARIABLE Y TÉRMINOS DEL RDD
+-rkcpe: running variable. Puntaje administrativo del primer examen centrado en el punto de corte (corte = 0), en cientos de puntos.
+-rkcpe2: rkcpe al cuadrado.
+-passrkcpe: igual a 1 si rkcpe >= 0 (puntaje por encima del corte).
+-int_pass_rkcpe: passrkcpe x rkcpe.
+-int_pass_rkcpe2: passrkcpe x rkcpe2.
+
+EDUCACIÓN (TRATAMIENTO Y RESULTADOS)
+-finishsecondary: igual a 1 si terminó la educación secundaria.
+-anysecondary: igual a 1 si cursó algún grado de secundaria.
+-postsecondary: igual a 1 si cursó educación postsecundaria.
+-max_grade_complete: grado máximo completado.
+-attending_school_klps2: igual a 1 si asistía a la escuela al momento de la encuesta de seguimiento.
+
+HABILIDADES COGNITIVAS
+-vocabulary_questions: número de respuestas correctas en la prueba de vocabulario (0 a 15).
+-vocabulary_sd1: puntaje de vocabulario reescalado para tener desviación estándar 1.
+-vocabulary_standardized: puntaje de vocabulario estandarizado (media 0, desviación estándar 1).
+-ravens_b_questions: número de respuestas correctas en las matrices de Raven, serie B (0 a 12).
+-ravens_sd1: puntaje de Raven reescalado para tener desviación estándar 1.
+-ravens_standardized: puntaje de Raven estandarizado (media 0, desviación estándar 1).
+-ravens_plus_vocab_standardized: índice estandarizado de Raven y vocabulario.
+
+MERCADO LABORAL
+-self_employed: igual a 1 si trabaja por cuenta propia (empleo informal).
+-employed: igual a 1 si tiene empleo asalariado.
+-self_employed_no_restriction: self_employed definido para toda la muestra.
+
+FERTILIDAD
+-pregnant_by_18: igual a 1 si la mujer se embarazó antes de los 18 años (solo mujeres).
+-partner_pregnant_by_18: igual a 1 si la pareja del hombre se embarazó antes de que él cumpliera 18 años (solo hombres).
