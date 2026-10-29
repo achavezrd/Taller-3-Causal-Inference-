@@ -1,0 +1,20 @@
+# Taller-3-Causal-Inference-
+
+Bases de datos para el taller 3.
+
+## Problema 1 - Error de medición
+
+Utilicen la base `sleep_score.dta`. Las variables son las siguientes:
+
+- **Atardecer:** hora promedio del atardecer durante la semana del experimento.
+- **Sueño:** horas de sueño promedio durante la semana del experimento.
+- **Puntaje:** puntaje expresado en desviaciones estándar.
+- **Error:** error promedio en la cantidad de sueño.
+
+## Problema 2 - Instrumentos no binarios e instrumentos débiles
+
+Utilicen la base `Riano_ValenciaCaicedo_2024.csv` y consulten `variables data IV.txt` para revisar las variables.
+
+## Problema 3
+
+Utilicen la base `fabregas_data.dta` y consulten `variables data RDD.txt` para revisar las variables.
