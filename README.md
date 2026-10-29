@@ -11,6 +11,5 @@ Utilicen la base `sleep_score.dta`. Las variables son las siguientes:
 
 Utilicen la base `Riano_ValenciaCaicedo_2024.csv`  y consulten `Riano_ValenciaCaicedo_2024.txt` para revisar las variables.
 
-## Problema 3
 
 Utilicen la base `fabregas_data.dta` y consulten `variables data RDD.txt` para revisar las variables.
